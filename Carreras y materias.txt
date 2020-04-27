@@ -1,0 +1,5 @@
+Arquitectura:  Comunicación - Matemáticas - Física - Procesos Constructivos 
+Historia: Sociología - Historia Argentina - Historia General - Prehistoria
+Abogacía: Derecho - Historia Constitucional - Derecho Civil - Economía Política
+Filosofía: Filosofía Política - Metafísica - Ética - Teoría de la Argumentación
+Lic. en Sistema: Algoritmos - Base de datos - Ingeniería de Sofware - Orientación a Objetos

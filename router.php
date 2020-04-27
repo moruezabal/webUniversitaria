@@ -1,12 +1,13 @@
 <?php
-   require_once'lib/payments.php';
+   
+    require_once 'carreras.php';
 
     // definimos la base url de forma dinamica
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
     // define una acción por defecto
     if (empty($_GET['action'])) {
-        $_GET['action'] = 'verpagos';
+        $_GET['action'] = 'vercarreras';
     } 
 
     // toma la acción que viene del usuario y parsea los parámetros
@@ -16,20 +17,18 @@
 
     // decide que camino tomar según TABLA DE RUTEO
     switch ($parametros[0]) {
-        case 'verpagos': //Muestra Lista de todos los pagos y el formulario
-            showPayments();
+        case 'vercarreras': //Muestra Lista de todos los pagos y el formulario
+        listarCarreras();
         break;
 
-        case 'agregar': // Agrega un pago generado mediante script
-            if (count($parametros) == 5){
-                addPayment($parametros[1],$parametros[2],$parametros[3],$parametros[4]);
-            }
+        case 'nuevacarrera':
+        agregarCarrera();
         break;
 
-        case 'nuevo': // Agrega un pago desde el formulario
-            newPayment();
+        case 'nuevamateria':
+        agregarMateria();
         break;
-
+        
         default: 
             echo "404 not found";
         break;
