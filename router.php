@@ -7,7 +7,7 @@
 
     // define una acción por defecto
     if (empty($_GET['action'])) {
-        $_GET['action'] = 'vercarreras';
+        $_GET['action'] = 'carreras';
     } 
 
     // toma la acción que viene del usuario y parsea los parámetros
@@ -17,7 +17,7 @@
 
     // decide que camino tomar según TABLA DE RUTEO
     switch ($parametros[0]) {
-        case 'vercarreras': //Muestra Lista de todos los pagos y el formulario
+        case 'carreras': //Muestra Lista de todos los pagos y el formulario
         listarCarreras();
         break;
 
@@ -28,7 +28,11 @@
         case 'nuevamateria':
         agregarMateria();
         break;
-        
+
+        case 'ver':
+        verCarrera($parametros[1]);
+        break;
+
         default: 
             echo "404 not found";
         break;
