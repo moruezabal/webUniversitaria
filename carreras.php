@@ -12,7 +12,6 @@ function listarcarreras(){
 
     $carreras = getCarreras();
     
-
     // arma la tabla con la información de la base de datos
     echo "<table class='table' style='width:450px'>";
     echo "<tr><th scope='col'>Carrera</th><th scope='col'>Años</th></tr>";
@@ -28,12 +27,11 @@ function listarcarreras(){
     echo("</table>");
 echo("</div>");
 
-
 }
 
 function verCarrera($idCarrera){
 
-    $infoCarrera = getCarrera();
+    $infoCarrera = getCarrera($idCarrera);
     $titulo = $infoCarrera[0]->nombre;
 
 
