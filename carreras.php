@@ -32,11 +32,11 @@ echo("</div>");
 function verCarrera($idCarrera){
 
     $infoCarrera = getCarrera($idCarrera);
-
     $html = mostrarHeader();
     echo ($html);
+    $titulo = $infoCarrera[0]->carrera;
     echo "<table class='table' style='width:450px'>";
-    echo "<caption>Arquitectura</caption>";
+    echo "<caption>" . $titulo . "</caption>";
 
     echo "<tr><th scope='col'>Materia</th><th scope='col'>Profesor</th></tr>";
 
@@ -47,8 +47,6 @@ function verCarrera($idCarrera){
         echo "</td></tr>";
     }
     echo("</table>");
-    
-
 }
 
 function agregarcarrera(){
