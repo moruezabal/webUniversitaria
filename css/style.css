@@ -59,3 +59,9 @@ table th{
     color: white;
     
 }
+
+caption{
+    font-size: 1.2rem;
+    padding: 0.25rem;
+    font-weight: 700;
+}

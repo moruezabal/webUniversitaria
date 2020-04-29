@@ -38,7 +38,6 @@ function verCarrera($idCarrera){
     echo "<table class='table' style='width:450px'>";
     echo "<caption>Arquitectura</caption>";
 
-    echo "<table class='table' style='width:450px'>";
     echo "<tr><th scope='col'>Materia</th><th scope='col'>Profesor</th></tr>";
 
     foreach ($infoCarrera as $data) {
