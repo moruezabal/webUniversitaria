@@ -32,14 +32,23 @@ echo("</div>");
 function verCarrera($idCarrera){
 
     $infoCarrera = getCarrera($idCarrera);
-    $titulo = $infoCarrera[0]->nombre;
-
 
     $html = mostrarHeader();
     echo ($html);
     echo "<table class='table' style='width:450px'>";
-    echo "<caption>" . $titulo . "</caption>";
-    echo "Impreso";
+    echo "<caption>Arquitectura</caption>";
+
+    echo "<table class='table' style='width:450px'>";
+    echo "<tr><th scope='col'>Materia</th><th scope='col'>Profesor</th></tr>";
+
+    foreach ($infoCarrera as $data) {
+       
+        echo "<tr><td>" . $data->nombre . "</td><td>" . $data->profesor . "";
+        
+        echo "</td></tr>";
+    }
+    echo("</table>");
+    
 
 }
 
