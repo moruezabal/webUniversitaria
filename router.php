@@ -1,6 +1,6 @@
 <?php
    
-    require_once 'carreras.php';
+    require_once 'controllers/carreras.controller.php';
 
     // definimos la base url de forma dinamica
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -18,19 +18,13 @@
     // decide que camino tomar según TABLA DE RUTEO
     switch ($parametros[0]) {
         case 'carreras': //Muestra Lista de todos los pagos y el formulario
-        listarCarreras();
+        $controller = new CarrerasController;
+        $controller->showCarreras();
         break;
-
-        case 'nuevacarrera':
-        agregarCarrera();
-        break;
-
-        case 'nuevamateria':
-        agregarMateria();
-        break;
-
+        
         case 'ver':
-        verCarrera($parametros[1]);
+        $controller = new CarrerasController;
+        $controller->showCarrera($parametros[1]);
         break;
 
         default: 
