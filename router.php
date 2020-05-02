@@ -13,19 +13,28 @@
     // toma la acción que viene del usuario y parsea los parámetros
     $accion = $_GET['action']; 
     $parametros = explode('/', $accion);
-    //var_dump($parametros); die; // like console.log();
 
     // decide que camino tomar según TABLA DE RUTEO
     switch ($parametros[0]) {
         case 'carreras': //Muestra Lista de todos los pagos y el formulario
-        $controller = new CarrerasController;
-        $controller->showCarreras();
-        break;
+            $controller = new CarrerasController;
+            $controller->showCarreras();
+            break;
         
         case 'ver':
-        $controller = new CarrerasController;
-        $controller->showCarrera($parametros[1]);
-        break;
+            $controller = new CarrerasController;
+            $controller->showCarrera($parametros[1]);
+            break;
+
+        case 'agregar':
+            if ($parametros[1] = 'carrera'){
+                $controller = new CarrerasController;
+                $controller->addCarrera();
+            }
+            if ($parametros[1] = 'materia'){
+                $controller = new CarrerasController;
+                $controller->addMateria();
+            }
 
         default: 
             echo "404 not found";
