@@ -27,20 +27,35 @@
             break;
 
         case 'agregar':
-            if ($parametros[1] = 'carrera'){
+            if ($parametros[1] == 'carrera'){
                 $controller = new CarrerasController;
                 $controller->addCarrera();
+
             }
-            if ($parametros[1] = 'materia'){
+            if ($parametros[1] == 'materia'){
                 $controller = new CarrerasController;
                 $controller->addMateria();
-            }
-        case 'materias':
-            echo("<h1>Aquí van las materias</h1>");
 
-        case 'eliminar';
-        $controller = new CarrerasController;
-        $controller->eraseCarrera($parametros[1]);
+            }
+            break;
+       
+        case 'materias':
+            $controller = new CarrerasController;
+            $controller->showMaterias();
+            break;
+            
+        case 'eliminar':
+            if ($parametros[1] == 'carrera'){
+                $controller = new CarrerasController;
+                $controller->eraseCarrera($parametros[2]);
+            break;
+            }
+
+            if ($parametros[1] == 'materia'){
+                $controller = new CarrerasController;
+                $controller->eraseMateria($parametros[2]);
+            break;
+            } 
 
         default: 
             echo "404 not found";

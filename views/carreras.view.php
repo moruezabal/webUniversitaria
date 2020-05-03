@@ -18,7 +18,7 @@ class CarrerasView{
 
             echo "<tr><td>" . $carrera->nombre . "</td><td>" . $carrera->cant_anios . "</td><td>" .
                 "<a href='ver/" . $idCarrera . "'>Ver</a></td><td>
-                <a href='eliminar/" . $idCarrera . "'>Eliminar</a>
+                <a href='eliminar/carrera/" . $idCarrera . "'>Eliminar</a>
                 </td></tr>";
         }
         echo ("</table>");
@@ -62,6 +62,32 @@ class CarrerasView{
         echo ("</table>");
     }
 
+    public function showMaterias($materias){
+
+        $html = $this->showHeader();
+        echo ($html);
+
+        echo "<table class='table' style='width:800px'>";
+        echo "<caption>Todas las materias</caption>";
+
+        echo "<tr><th scope='col'>Nombre</th><th scope='col'>Profesor</th><th scope='col'>Carrera</th><th scope='col'>Acción</th></tr>";
+
+        foreach ($materias as $materia) {
+
+            echo "<tr><td>" . $materia->nombre . "</td><td>" . $materia->profesor . "</td><td>" . $materia->carrera . "</td>";
+
+            echo "<td><a href='eliminar/materia/" . $materia->id . "'>Eliminar</a></td>";
+
+
+
+            echo "</tr>";
+        }
+        echo ("</table>");
+
+
+
+    }
+
 
     private function showHeader(){
 
@@ -91,7 +117,7 @@ class CarrerasView{
     private function showFormCarrera(){
 
         // Comienzo del formulario para agregar CARRERA
-        echo ("<form action='agregar/carrera' method='post'");
+        echo ("<form action='agregar/carrera/' method='post'");
             echo ("<label>Carrera</label> <input name='carrera' type='text'>");
             echo ("<label>Cant. de años</label>
                     <select name='cant_anios'>
@@ -110,7 +136,7 @@ class CarrerasView{
     private function showFormMateria($listaCarreras){
 
         //Comienzo del formulario para agregar MATERIA
-        echo ("<form action='agregar/materia' method='post'");
+        echo ("<form action='agregar/materia/' method='post'");
             echo ("<label>Materia</label> <input name='materia' type='text'>");
             echo ("<label>Profesor</label> <input name='profesor' type='text'>");
             
