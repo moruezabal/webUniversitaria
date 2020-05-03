@@ -11,15 +11,15 @@ class CarrerasView{
 
         // arma la tabla con la información de la base de datos
         echo "<table class='table' style='width:450px'>";
-        echo "<tr><th scope='col'>Carrera</th><th scope='col'>Años</th></tr>";
+        echo "<tr><th scope='col'>Carrera</th><th scope='col'>Años</th><th colspan=2>Acciones</th></tr>";
 
         foreach ($carreras as $carrera) {
             $idCarrera = $carrera->id_carrera;
 
             echo "<tr><td>" . $carrera->nombre . "</td><td>" . $carrera->cant_anios . "</td><td>" .
-                "<a href='ver/" . $idCarrera . "'>Ver
-            
-            </a></td></tr>";
+                "<a href='ver/" . $idCarrera . "'>Ver</a></td><td>
+                <a href='eliminar/" . $idCarrera . "'>Eliminar</a>
+                </td></tr>";
         }
         echo ("</table>");
 
@@ -30,7 +30,9 @@ class CarrerasView{
         //Obtengo la lista de carreras
         $i = 0;
         foreach ($carreras as $carrera){
-            $listaCarreras[$i] = $carrera->nombre;
+            $clave = $carrera->id_carrera;
+            $valor = $carrera->nombre;
+            $listaCarreras [$clave] = $valor; // [1]=> "Arquitectura" - [2]=> "Historia" 
             $i++;
         }
         
@@ -79,8 +81,8 @@ class CarrerasView{
                 </header>
                 <div class="barra">
                     <nav class="nav">
-                        <a href="index.html">Carrera</a>
-                        <a href="nosotros.html">Materias</a>
+                        <a href="' . BASE_URL . 'carreras">Carreras</a>
+                        <a href="' . BASE_URL . 'materias">Materias</a>
                     </nav>
                 </div>
         ');
@@ -110,20 +112,20 @@ class CarrerasView{
         //Comienzo del formulario para agregar MATERIA
         echo ("<form action='agregar/materia' method='post'");
             echo ("<label>Materia</label> <input name='materia' type='text'>");
+            echo ("<label>Profesor</label> <input name='profesor' type='text'>");
             
             echo ("<label>Carrera</label>
-                    <select carrera='cant_anios'>");
+                    <select name='carrera'>");
 
-                    for ($i = 0; $i<count($listaCarreras);$i++){
-                        echo ("<option value='" . $i . "'>" . $listaCarreras[$i] ."</option>");
+                    foreach ($listaCarreras as $id => $carrera){
+                        echo ("<option value='" . $id . "'>" . $carrera ."</option>");
                     }
-                    
                     echo("</select>");
-            echo("<button type='submit'>Agregar Carrera</button>");
+            echo("<button type='submit'>Agregar Materia</button>");
         echo("</form>");
     }
 
     public function showError($mensaje){
-        
+
     }
 }

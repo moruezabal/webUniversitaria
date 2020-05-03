@@ -35,6 +35,12 @@
                 $controller = new CarrerasController;
                 $controller->addMateria();
             }
+        case 'materias':
+            echo("<h1>Aquí van las materias</h1>");
+
+        case 'eliminar';
+        $controller = new CarrerasController;
+        $controller->eraseCarrera($parametros[1]);
 
         default: 
             echo "404 not found";

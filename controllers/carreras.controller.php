@@ -47,6 +47,33 @@ class CarrerasController {
 
     public function addMateria(){
 
+        $materia = $_POST['materia'];
+        $profesor = $_POST['profesor'];
+        $carrera = $_POST['carrera'];
+    
+        // verifica los datos obligatorios
+        if (!empty($materia) && !empty($profesor) && !empty($carrera)) {
+            // inserta en la DB y redirige
+            $model = new CarrerasModel;
+            $model->insertMateria($materia,$profesor,$carrera);
+            header('Location: ' . BASE_URL . "carreras");
+        } else {
+            $view = new CarrerasView;
+            $view->showError("ERROR! Faltan datos obligatorios"); //FALTA HACER FUNCION
+        }
+    }
+
+    public function eraseCarrera($idCarrera){
+
+        $model = new CarrerasModel;
+        $success = $model->deleteCarrera($idCarrera);
+        if ($success){
+            header('Location: ' . BASE_URL . "carreras");
+        }
+        else {
+            echo("<h1>Debe borrar todas las materias para eliminar la carrera</h1>");
+        }
+        
     }
        
     
