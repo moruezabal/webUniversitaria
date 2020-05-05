@@ -7,38 +7,45 @@ class CarrerasView{
         $html = $this->showHeader();
         echo ($html);
 
-        echo ("<h1>Nuestras carreras</h1>");
+        echo ("<div class='contenedor-principal'>"); // Contenedor para aplicar GRID
+            echo ("<div class='tabla-carreras'>");
 
-        // arma la tabla con la información de la base de datos
-        echo "<table class='table' style='width:450px'>";
-        echo "<tr><th scope='col'>Carrera</th><th scope='col'>Años</th><th colspan=2>Acciones</th></tr>";
+                echo ("<h1>Nuestras carreras</h1>");
+                
+                // arma la tabla con la información de la base de datos
+                echo "<table class='table' style='width:450px'>";
+                echo "<tr><th scope='col'>Carrera</th><th scope='col'>Años</th><th colspan=2>Acciones</th></tr>";
 
-        foreach ($carreras as $carrera) {
-            $idCarrera = $carrera->id_carrera;
+                foreach ($carreras as $carrera) {
+                    $idCarrera = $carrera->id_carrera;
 
-            echo "<tr><td>" . $carrera->nombre . "</td><td>" . $carrera->cant_anios . "</td><td>" .
-                "<a href='ver/" . $idCarrera . "'>Ver</a></td><td>
-                <a href='eliminar/carrera/" . $idCarrera . "'>Eliminar</a>
-                </td></tr>";
-        }
-        echo ("</table>");
+                    echo "<tr><td>" . $carrera->nombre . "</td><td>" . $carrera->cant_anios . "</td><td>" .
+                        "<a href='ver/" . $idCarrera . "'>Ver</a></td><td>
+                        <a href='eliminar/carrera/" . $idCarrera . "'>Eliminar</a>
+                        </td></tr>";
+                }
+                echo ("</table>");
+            echo("</div>");
 
-        //imprimo formulario para agregar carrera
-        $formCarrera = $this->showFormCarrera();
-        echo($formCarrera);
+            echo ("<div class='formulario-carrera>");
+                //imprimo formulario para agregar carrera
+                $formCarrera = $this->showFormCarrera();
+                echo($formCarrera);
 
-        //Obtengo la lista de carreras
-        $i = 0;
-        foreach ($carreras as $carrera){
-            $clave = $carrera->id_carrera;
-            $valor = $carrera->nombre;
-            $listaCarreras [$clave] = $valor; // [1]=> "Arquitectura" - [2]=> "Historia" 
-            $i++;
-        }
-        
-        // Imprimo form para agregar Materias, con la lista de carreras p/ el selector
-        $formMateria = $this->showFormMateria($listaCarreras);
-        echo($formMateria);
+                //Obtengo la lista de carreras
+                $i = 0;
+                foreach ($carreras as $carrera){
+                    $clave = $carrera->id_carrera;
+                    $valor = $carrera->nombre;
+                    $listaCarreras [$clave] = $valor; // [1]=> "Arquitectura" - [2]=> "Historia" 
+                    $i++;
+                }
+                
+                // Imprimo form para agregar Materias, con la lista de carreras p/ el selector
+                $formMateria = $this->showFormMateria($listaCarreras);
+                echo($formMateria);      
+            echo("</div>"); // Cierre de contenedor formulario
+        echo("</div>"); // Cierre contenedor principal
 
     }
 
@@ -115,21 +122,23 @@ class CarrerasView{
     }
 
     private function showFormCarrera(){
-
-        // Comienzo del formulario para agregar CARRERA
-        echo ("<form action='agregar/carrera/' method='post'");
-            echo ("<label>Carrera</label> <input name='carrera' type='text'>");
-            echo ("<label>Cant. de años</label>
-                    <select name='cant_anios'>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                        <option value='6'>6</option>
-                        <option value='7'>7</option>  
-                    </select>");
-            echo("<button type='submit'>Agregar Carrera</button>");
+    
+        echo ("<form action='agregar/carrera/' method='post'>");
+            echo("<fieldset>");
+                echo("<legend>Agregar Carrera</legend>");
+                echo ("<label>Carrera</label> <input name='carrera' type='text'>");
+                echo ("<label>Cant. de años</label>
+                        <select name='cant_anios'>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='6'>6</option>
+                            <option value='7'>7</option>  
+                        </select>");
+                echo("<button type='submit'>Agregar Carrera</button>");
+            echo("</fieldset>");
         echo("</form>");
     }
 

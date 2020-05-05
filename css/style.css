@@ -65,3 +65,22 @@ table caption{
     padding: 0.25rem;
     font-weight: 700;
 }
+
+.contenedor-principal{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    background-color: coral;
+}
+
+.tabla-carreras{
+    background-color: rgb(214, 233, 42);
+
+}
+
+.formulario-carrera{
+    background-color: #FFE6A7;
+
+}
+
+
